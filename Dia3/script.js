@@ -1,21 +1,32 @@
-var n = prompt("numeros")
-var k = prompt("repeticones")
+var n = prompt("Ingrese los números:");
+var k = prompt("Ingrese el número de repeticiones:");
+num = "";
+k = parseInt(k);
 
-num = ""
-
-for (let index = 0; index < k; index++) {
-    num += n;    
+for (let i = 0; i < k; i++) {
+    num += n;
 }
 
 console.log(num)
 
-var a = 0
+function SuperDigit(n, k){
+    n = n.toString();
+    k = parseInt(k);
 
-for (const i of num){
-    a += Number (i) 
+    if (n.length === 1 && k === 1){
+        return parseInt(n);
+    }
+
+    var sum = 0
+    for (let digit of n){
+        sum += parseInt(digit);
+    }
+
+    sum *= k;
+    console.log(sum);
+    
+    return SuperDigit(sum.toString(),1);
 }
 
-console.log(a)
-
-
-
+var resultado = SuperDigit(n,k);
+console.log("El superdigito final es:", resultado);
