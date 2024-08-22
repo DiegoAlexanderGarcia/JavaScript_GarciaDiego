@@ -1,16 +1,60 @@
-console.log("\nopcion1\nopcion2\nopcion3\nopcion4");
+let datos = {
+    "informacion_personal": {
+    "nombre": "Juan Pérez",
+    "edad": 30,
+    "direccion": {
+    "calle": "Calle Principal",
+    "numero": 123,
+    "ciudad": "Ciudad Ejemplo"
+    },
+    "contacto": {
+    "correo": "juan.perez@example.com",
+    "telefono": "+123456789"
+    }
+    },
+    "historial_educativo": [
+    {
+    "nivel": "Secundaria",
+    "institucion": "Instituto Secundario",
+    "anio_inicio": 2000,
+    "anio_fin": 2005
+    },
+    {
+    "nivel": "Universidad",
+    "institucion": "Universidad Ejemplar",
+    "titulo": "Licenciatura en Ciencias",
+    "anio_inicio": 2006,
+    "anio_fin": 2010
+    }
+    ],
+    "experiencia_laboral": [
+    {
+    "puesto": "Desarrollador de Software",
+    "empresa": "Tech Solutions",
+    "periodo": "2010-2015",
+    "responsabilidades": [
+    "Desarrollo de aplicaciones web",
+    "Mantenimiento de bases de datos"
+    ]
+    },
+    {
+    "puesto": "Gerente de Proyectos",
+    "empresa": "Proyectos Avanzados",
+    "periodo": "2016-actualidad",
+    "responsabilidades": [
+    "Planificación y supervisión de proyectos",
+    "Coordinación de equipos"
+    ]
+    }
+    ]
+    }
 
-var mn =("menu \n");
-mn += ("op1 \n ops2\n");
-mn += ("op2\n");
-mn += ("op3\n");
+console.log("menu crud")
+console.log("1. crear\n"+
+            "2. actaulizar\n"+
+            "3. eliminar")
 
+prompt("elige una opcion:")
 
-
-do{
-
-    var n = parseInt(prompt(mn));
-document.write("hola"+n);
-
-}while(n!=3);
+console.log(datos)
 
