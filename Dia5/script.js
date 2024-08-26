@@ -52,6 +52,12 @@ function addProduct() {
             console.log(data)
 }
 
+function viewProducts(){
+    console.log(data.products)
+}
+
+
+
 var opcion = prompt("Inventory System\n"+
                     "1. Gestión de productos\n"+
                     "2. Gestión de Proveedores\n"+
@@ -61,17 +67,42 @@ var opcion = prompt("Inventory System\n"+
                     "6. Búsqueda y Filtrado\n"+
                     "7. Integridad y validación de datos\n")
 
-if (opcion = 1){
+if (opcion == 1){
     var selec = prompt("Gestión de productos\n"+
                         "1. añadir nuevo producto\n"+
                         "2. mostrar stock\n"+
                         "3. actualizar un nuevo producto\n"+
                         "4. eliminar producto del stock\n")
-        if (selec = 1){
+        if (selec == 1){
             addProduct()
         }
 
-        if (selec = 2){
+        if (selec == 2){
+            viewProducts()
+        }
+
+        if (selec == 3){
+            function updateProduct(id, newDetails) {
+                for (let i =0; i<data[0].products.length;i++){
+                    if (data[0].products[i].id===id){
+                        data[0].products[i].name=newDetails.name
+                        data[0].products[i].category=newDetails.category
+                        data[0].products[i].price=newDetails.price
+                        data[0].products[i].quantityInStock=newDetails.quantityInStock
+                        data[0].products[i].supplierId=newDetails.supplierId
+                    }
+                }
+            }
+            let id =parseInt (prompt("ingre id:"))
+            let newDetails={
+                name:prompt("ingresa nombre:"),
+                category: prompt("categoria producto:"),
+                price: prompt("precio producto:"),
+                quantityInStock: prompt("cantidad:"),
+                supplierId: prompt("supplierId:")
+            }
+            updateProduct(id, newDetails)
             console.log(data.products)
         }
+
 }
