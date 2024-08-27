@@ -34,75 +34,129 @@ let data = {
 console.log(data)
 
 function addProduct() {
-            var id = prompt("ID:")
-            var names = prompt("nombre producto:")
-            var category = prompt("categoria producto:")
-            var price = prompt("precio producto:")
-            var quantityInStock = prompt("cantidad:")
-            var supplierId = prompt("supplierId:")
-            
-            data.products.push({
-                "id": id,
-                "name": names,
-                "category": category,
-                "price": price,
-                "quantityInStock": quantityInStock,
-                "supplierId": supplierId
-            })
-            console.log(data)
+    var id = parseInt(prompt("ID:"))
+    var names = prompt("nombre producto:")
+    var category = prompt("categoria producto:")
+    var price = parseFloat(prompt("precio producto:"))
+    var quantityInStock = parseInt(prompt("cantidad:"))
+    var supplierId = parseInt(prompt("supplierId:"))
+    
+    data.products.push({
+        "id": id,
+        "name": names,
+        "category": category,
+        "price": price,
+        "quantityInStock": quantityInStock,
+        "supplierId": supplierId
+    })
+    console.log(data)
 }
 
 function viewProducts(){
     console.log(data.products)
 }
 
-
-
-var opcion = prompt("Inventory System\n"+
-                    "1. Gestión de productos\n"+
-                    "2. Gestión de Proveedores\n"+
-                    "3. Gestión de Pedidos\n"+
-                    "4. Gestión de existencias\n"+
-                    "5. Informes\n"+
-                    "6. Búsqueda y Filtrado\n"+
-                    "7. Integridad y validación de datos\n")
-
-if (opcion == 1){
-    var selec = prompt("Gestión de productos\n"+
-                        "1. añadir nuevo producto\n"+
-                        "2. mostrar stock\n"+
-                        "3. actualizar un nuevo producto\n"+
-                        "4. eliminar producto del stock\n")
-        if (selec == 1){
-            addProduct()
-        }
-
-        if (selec == 2){
-            viewProducts()
-        }
-
-        if (selec == 3){
-            function updateProduct(id, newDetails) {
-                for (let i =0; i<data[0].products.length;i++){
-                    if (data[0].products[i].id===id){
-                        data[0].products[i].name=newDetails.name
-                        data[0].products[i].category=newDetails.category
-                        data[0].products[i].price=newDetails.price
-                        data[0].products[i].quantityInStock=newDetails.quantityInStock
-                        data[0].products[i].supplierId=newDetails.supplierId
-                    }
-                }
-            }
-            let id =parseInt (prompt("ingre id:"))
-            let newDetails={
-                name:prompt("ingresa nombre:"),
-                category: prompt("categoria producto:"),
-                price: prompt("precio producto:"),
-                quantityInStock: prompt("cantidad:"),
-                supplierId: prompt("supplierId:")
-            }
-            updateProduct(id, newDetails)
-            console.log(data.products)
-        }
-
+function updateProduct(id, newDetails) {
+    let productIndex = data.products.findIndex(product => product.id === id)
+    if (productIndex !== -1) {
+        data.products[productIndex] = {...data.products[productIndex], ...newDetails}
+        console.log("Producto actualizado:", data.products[productIndex])
+    } else {
+        console.log("Producto no encontrado")
+    }
 }
+
+function deleteProduct(id) {
+    let productIndex = data.products.findIndex(product => product.id === id)
+    if (productIndex !== -1) {
+        data.products.splice(productIndex, 1)
+        console.log("Producto eliminado")
+    } else {
+        console.log("Producto no encontrado")
+    }
+}
+
+function mainMenu() {
+    while (true) {
+        var opcion = prompt("Inventory System\n"+
+                            "1. Gestión de productos\n"+
+                            "2. Gestión de Proveedores\n"+
+                            "3. Gestión de Pedidos\n"+
+                            "4. Gestión de existencias\n"+
+                            "5. Informes\n"+
+                            "6. Búsqueda y Filtrado\n"+
+                            "7. Integridad y validación de datos\n"+
+                            "8. Salir\n")
+
+        switch (opcion) {
+            case "1":
+                productMenu()
+                break
+            case "2":
+                // Implementa la gestión de proveedores
+                break
+            case "3":
+                // Implementa la gestión de pedidos
+                break
+            case "4":
+                // Implementa la gestión de existencias
+                break
+            case "5":
+                // Implementa los informes
+                break
+            case "6":
+                // Implementa la búsqueda y filtrado
+                break
+            case "7":
+                // Implementa la integridad y validación de datos
+                break
+            case "8":
+                console.log("Gracias por usar el sistema. ¡Hasta luego!")
+                return
+            default:
+                console.log("Opción no válida. Por favor, intente de nuevo.")
+        }
+    }
+}
+
+function productMenu() {
+    while (true) {
+        var selec = prompt("Gestión de productos\n"+
+                            "1. Añadir nuevo producto\n"+
+                            "2. Mostrar stock\n"+
+                            "3. Actualizar un producto\n"+
+                            "4. Eliminar producto del stock\n"+
+                            "5. Volver al menú principal\n")
+        
+        switch (selec) {
+            case "1":
+                addProduct()
+                break
+            case "2":
+                viewProducts()
+                break
+            case "3":
+                var id = parseInt(prompt("ID del producto a actualizar:"))
+                var newDetails = {
+                    name: prompt("Nuevo nombre (deja en blanco para no cambiar):"),
+                    category: prompt("Nueva categoría (deja en blanco para no cambiar):"),
+                    price: parseFloat(prompt("Nuevo precio (deja en blanco para no cambiar):")),
+                    quantityInStock: parseInt(prompt("Nueva cantidad (deja en blanco para no cambiar):")),
+                    supplierId: parseInt(prompt("Nuevo supplierId (deja en blanco para no cambiar):"))
+                }
+                Object.keys(newDetails).forEach(key => newDetails[key] === "" && delete newDetails[key])
+                updateProduct(id, newDetails)
+                break
+            case "4":
+                var id = parseInt(prompt("ID del producto a eliminar:"))
+                deleteProduct(id)
+                break
+            case "5":
+                return
+            default:
+                console.log("Opción no válida. Por favor, intente de nuevo.")
+        }
+    }
+}
+
+mainMenu()
