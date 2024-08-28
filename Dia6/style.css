@@ -1,0 +1,15 @@
+.titulo{
+    position: absolute;
+    left: 45vw;
+}
+
+.contInfo{
+    position: absolute;
+    top: 100px;
+}
+
+#info{
+    position: absolute;
+    top: 10vw;
+
+}
