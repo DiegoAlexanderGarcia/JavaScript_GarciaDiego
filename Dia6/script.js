@@ -31,7 +31,9 @@ let data = {
     ]
 }
 
-console.log(data)
+function cargarProduct(){
+    console.log(fetch('data'))
+}
 
 function addProduct() {
     var id = parseInt(prompt("ID:"))
