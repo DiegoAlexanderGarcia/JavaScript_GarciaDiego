@@ -1,0 +1,58 @@
+@font-face {
+    font-family: "Oxanium";
+    src: url(https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap&#39);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oxanium', cursive;
+    }
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#6eb9f5,#ebf5fd); height:100vh
+}
+
+#cont{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pokedex{
+    position: absolute;
+}
+
+#pokemon_caja{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    left: 150px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pokemon{
+    width: 100px;
+    height: 100px;
+}
+
+#flechas{
+    position: relative;
+    top: 240px;
+    right: 560px;
+}
+
+#entrada{
+    position: relative;
+    top: 150px;
+    right: 400px;
+}
+
