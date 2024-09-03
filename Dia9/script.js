@@ -1,56 +1,33 @@
-let currentPokemonId = null; // Variable global para controlar el ID actual
+let currentPokemonId = null;
 
-// Función para obtener el Pokémon por nombre o ID
-function getPokemon(pokemon) {
-    const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
+const getPokemon = (pokemon) => {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+        .then(res => res.json())
+        .then(({ id, name, sprites }) => {
+            currentPokemonId = id;
 
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Pokémon no encontrado');
-            }
-            return response.json();
+            document.getElementById('pokemon-image').src = sprites.versions["generation-v"]["black-white"].animated.front_default || sprites.front_default;
+            document.getElementById('pokemon-name').textContent = `  ${name}`;
+            document.getElementById('pokemon-id').textContent = ` ${id}- `;
+
+            playPokemonSound(id);
         })
-        .then(data => {
-            // Actualizar la imagen del Pokémon con el GIF o imagen estática
-            const gif = data.sprites.versions["generation-v"]["black-white"].animated.front_default;
-            document.getElementById('pokemon-image').src = gif || data.sprites.front_default;
+        .catch(() => resetPokemonDisplay());
+};
 
-            // Mostrar nombre y ID del Pokémon
-            document.getElementById('pokemon-name').textContent = `Nombre: ${data.name}`;
-            document.getElementById('pokemon-id').textContent = `ID: ${data.id} `;
+const resetPokemonDisplay = () => {
+    document.getElementById('pokemon-image').src = '';
+    document.getElementById('pokemon-name').textContent = '';
+    document.getElementById('pokemon-id').textContent = '';
+};
 
-            // Actualizar la variable global con el ID actual
-            currentPokemonId = data.id;
-        })
-        .catch(error => {
-            alert(error);
-            document.getElementById('pokemon-image').src = '';
-            document.getElementById('pokemon-name').textContent = '';
-            document.getElementById('pokemon-id').textContent = '';
-        });
-}
+document.getElementById('pokemonInput').addEventListener('keypress', (e) => e.key === 'Enter' && getPokemon(e.target.value.toLowerCase()));
 
-// Evento para detectar cuando se presiona Enter en el campo de texto
-document.getElementById('pokemonInput').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        const input = document.getElementById('pokemonInput').value.toLowerCase();
-        getPokemon(input);  // Realiza la búsqueda cuando se presiona "Enter"
-    }
-});
+document.getElementById('nextButton').addEventListener('click', () => currentPokemonId && getPokemon(++currentPokemonId));
+document.getElementById('prevButton').addEventListener('click', () => currentPokemonId > 1 && getPokemon(--currentPokemonId));
 
-// Función para el botón "Next" (siguiente Pokémon)
-document.getElementById('nextButton').addEventListener('click', function() {
-    if (currentPokemonId !== null) {  // Asegurarse de que ya haya un Pokémon buscado
-        currentPokemonId++;  // Incrementar el ID
-        getPokemon(currentPokemonId);  // Obtener el siguiente Pokémon
-    }
-});
-
-// Función para el botón "Pre" (anterior Pokémon)
-document.getElementById('prevButton').addEventListener('click', function() {
-    if (currentPokemonId > 1) {  // Asegurarse de que no vaya a ID menor que 1
-        currentPokemonId--;  // Decrementar el ID
-        getPokemon(currentPokemonId);  // Obtener el Pokémon anterior
-    }
-});
+const playPokemonSound = (id) => {
+    const audio = document.getElementById('pokemon-sound');
+    audio.src = `https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${id}.ogg`;
+    audio.play().catch(console.error);
+};
