@@ -46,15 +46,33 @@ body{
     height: 6vw;
 }
 
+#info-poke
+
+#pokemon-id{
+    position: absolute;
+    top: 9vw;
+    color: rgb(121, 118, 118);
+}
+
+#pokemon-name{
+    position: absolute;
+    top: 9vw;
+    left: 9vw;
+    width: 7vw;
+}
+
 #flechas{
     position: relative;
-    top: 14vw;
-    right: 16vw;
+    top: 16vw;
+    right: 10vw;
 }
 
 #pokemonInput{
     position: relative;
-    top: 110px;
-    left: 2.5vw;
+    top: 9vw;
+    right: 0vw;
+    height: 2vw;
+    width: 19vw;
+    border-radius: 10px;
 }
 
