@@ -22,37 +22,39 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 40vw;
 }
 
 #pokedex{
     position: absolute;
+    height: 40vw;
 }
 
-#pokemon_caja{
-    width: 100px;
-    height: 100px;
+#pokemon-container{
+    width: 6vw;
+    height: 6vw;
     position: relative;
-    left: 150px;
-    
+    left: 190px;
+    bottom: 3vw;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#pokemon{
-    width: 100px;
-    height: 100px;
+#pokemon-image{
+    width: 6vw;
+    height: 6vw;
 }
 
 #flechas{
     position: relative;
-    top: 240px;
-    right: 560px;
+    top: 14vw;
+    right: 16vw;
 }
 
-#entrada{
+#pokemonInput{
     position: relative;
-    top: 150px;
-    right: 400px;
+    top: 110px;
+    left: 2.5vw;
 }
 

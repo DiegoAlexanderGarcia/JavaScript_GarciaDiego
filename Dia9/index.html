@@ -10,13 +10,15 @@
 <body>
     <div id="cont">
         <img id="pokedex" src="/Dia9/pokedex.png" alt="">
-        <div id="pokemon_caja">
-        <img id="pokemon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/11.gif" alt="">
+        <div id="pokemon-container">
+            <img id="pokemon-image" src="" alt="">
+            <p id="pokemon-id"></p>
+            <p id="pokemon-name"></p>
         </div>
-        <input id="entrada" type="text">
+        <input type="text" id="pokemonInput" placeholder="Ingresa el ID o nombre del Pokémon">
         <div id="flechas">
-        <button type="button" class="btn btn-dark">⬅︎ Pre </button>
-        <button type="button" class="btn btn-dark"> Next ➡︎</button>
+        <button type="button" class="btn btn-dark" id="prevButton">⬅︎ Pre </button>
+        <button type="button" class="btn btn-dark" id="nextButton"> Next ➡︎</button>
     </div>
 </div>
 </body>
