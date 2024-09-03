@@ -12,13 +12,13 @@ function getPokemon(pokemon) {
             return response.json();
         })
         .then(data => {
-            // Actualizar la imagen del Pokémon con el GIF o imagen estática
             const gif = data.sprites.versions["generation-v"]["black-white"].animated.front_default;
+            const audio = data.abilities.latest
             document.getElementById('pokemon-image').src = gif || data.sprites.front_default;
 
             // Mostrar nombre y ID del Pokémon
-            document.getElementById('pokemon-name').textContent = `Nombre: ${data.name}`;
-            document.getElementById('pokemon-id').textContent = `ID: ${data.id} `;
+            document.getElementById('pokemon-name').textContent = ` ${data.name.toUpperCase()} `;
+            document.getElementById('pokemon-id').textContent = ` ${data.id}-`;
 
             // Actualizar la variable global con el ID actual
             currentPokemonId = data.id;
