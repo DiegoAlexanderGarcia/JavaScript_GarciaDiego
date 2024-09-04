@@ -1,7 +1,4 @@
-@font-face {
-    font-family: "Oxanium";
-    src: url(https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap&#39);
-}
+@import url(https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap&#39);
 
 * {
     margin: 0;
