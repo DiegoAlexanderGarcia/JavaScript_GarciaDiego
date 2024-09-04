@@ -122,13 +122,13 @@ body{
 }
 .card-title1{
     position: absolute;
-    top: 16.3vw;
+    top: 11rem;
     left: 0.5vw;
     color: white;
 }
 .card-title2{
     position: absolute;
-    top: 15vw;
+    top: 11vw;
     left: 0.5vw;
     color: white;
 }
