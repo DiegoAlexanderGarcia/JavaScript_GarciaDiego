@@ -1,0 +1,48 @@
+body{
+    background-color: rgb(5, 73, 5);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.Contenedor{
+    display: flex;
+    justify-content: center;
+}
+
+.imgMesa{
+    width: 100%;
+    
+}
+
+.jugador{
+    position: absolute;
+    width: 5vw;
+    height: 7vw;
+    top: 40vw;
+    background-color: white;
+}
+
+#ring{
+    position: absolute;
+    top: 7vw;
+    right: 5vw;
+}
+
+#next{
+    position: absolute;
+    top: 7vw;
+    left: 5vw;
+}
+
+#carta{
+    position: absolute;
+    top: 10vw;
+}
+
+#jugar{
+    margin: 2vw;
+    font-size: 1vw;
+}
