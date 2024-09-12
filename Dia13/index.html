@@ -1,26 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Dia13/style/style.css">
-    <title>Guerra</title>
+    <title>Juego de Guerra de Cartas</title>
 </head>
 <body>
-    <div class="Contenedor">
-        <div class="mesaDjuego">
-            <button id="jugar">iniciar</button>
-            <div class="mazo">
-
-            </div>
-            <div class="jugador">
-                <img src="" alt="">
-                <button id="next">next</button>
-                <button id="ring">pre</button>
-                <button id="carta">lazar</button>
-            </div>
+    <div id="game-container">
+        <h1>Juego de Guerra de Cartas</h1>
+        <div>
+            <label for="mode">Selecciona el modo de juego:</label>
+            <select id="mode">
+                <option value="player">Jugador vs Jugador</option>
+                <option value="computer">Jugador vs Computadora</option>
+            </select>
         </div>
+        <div id="player-cards">
+            <div id="player1-card" class="card"></div>
+            <div id="player2-card" class="card"></div>
+        </div>
+        <div id="buttons">
+            <button id="player1-button">Sacar Carta Jugador 1</button>
+            <button id="player2-button">Sacar Carta Jugador 2</button>
+        </div>
+        <div id="result"></div>
     </div>
-<script src="/Dia13/js/script.js"></script>
+    <script src="/Dia13/js/script.js"></script>
 </body>
 </html>
