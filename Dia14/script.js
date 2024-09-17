@@ -57,3 +57,14 @@ class contUser extends HTMLElement {
 }}
 customElements.define('mi-main', contUser)
 
+document.getElementById("search-bar").addEventListener("input",e=>{
+    if (e.target.matches("#search-bar")){
+        document.querySelectorAll(".user-card").forEach(users=>{
+            let nombre = users.querySelector(".username").textContent.toLocaleLowerCase();
+            let busqueda = e.target.value.toLocaleLowerCase();
+            nombre.includes(busqueda)
+            ?users.classList.remove('filtro')
+            :users.classList.add('filtro')
+        })
+    }
+})
