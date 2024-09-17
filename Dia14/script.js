@@ -38,37 +38,22 @@ customElements.define('mi-header',crearHeader);
 class contUser extends HTMLElement {
     constructor() {
         super();
-        let data = [];
-
-    async function fetchdata() {
-        try {
-            const response = await fetch("https://66e45accd2405277ed1404b3.mockapi.io/Live_User_Filter_Js/api/v1/informacionAlamacenada");
-            data = await response.json();
-            displayUsers(data);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    }
-
-    function displayUsers(users) {
-        const main = document.querySelector("main");
-        if (main) {
-            main.innerHTML = users.map(user => `
+        fetch("https://66e45accd2405277ed1404b3.mockapi.io/Live_User_Filter_Js/api/v1/informacionAlamacenada")
+        .then(res=> res.json())
+        
+        .then(data =>{
+            data.forEach(user => {
+            this.innerHTML +=`
                 <div class="user-card">
-                    <img src="${user.avatar || '/storage/Montserrat-VariableFont_wght.ttf.url'}" alt="Perfil ${user.name || 'Usuario'}" class="profile-img">
-                    <div class="user-info">
-                        <h2 class="username">${user.name_full || 'Usuario sin nombre'}</h2>
-                        <p class="description">${user.description || 'Ubicación desconocida'}</p>
-                    </div>
+                <img src="${user.avatar || '/storage/Montserrat-VariableFont_wght.ttf.url'}" alt="Perfil ${user.name || 'Usuario'}" class="profile-img">
+                <div class="user-info">
+                    <h2 class="username">${user.name_full || 'Usuario sin nombre'}</h2>
+                    <p class="description">${user.description || 'Ubicación desconocida'}</p>
                 </div>
-            `).join('');
-        } else {
-            console.error("Elemento main no encontrado");
-        }
-    }
-
-    
-
-        }
-}
+            </div>
+                `
+        });
+        })
+}}
 customElements.define('mi-main', contUser)
+
