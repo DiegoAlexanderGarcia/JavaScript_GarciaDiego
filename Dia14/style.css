@@ -69,3 +69,6 @@ main {
     color: #666;
 }
 
+.filtro {
+    display: none;
+}
