@@ -1,0 +1,13 @@
+.filtro {
+    display: none;
+}
+
+.hero-card {
+    border: 1px solid #d83737;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 250px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
